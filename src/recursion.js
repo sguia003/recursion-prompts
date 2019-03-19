@@ -200,9 +200,26 @@ var divide = function(x, y) {
 // gcd(4,36); // 4
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
-var gcd = function(x, y) {
+var gcd = function(x, y, k) {
   if(x < 0 || y < 0) {
     return null;
+  }
+  if(x >= y) {
+    let factor = k ? k : y;
+    if(x %factor === 0 && y%factor === 0) {
+     return factor;    
+    } else {
+      return gcd(x, y, factor-1);  
+    }
+      
+  }
+  if(y > x) {
+    let factor = k ? k : x;  
+    if(y %factor === 0 && x%factor === 0) {
+      return factor;    
+    } else {
+      return gcd(x, y, factor-1);    
+    }  
   }
 };
 
